@@ -1,0 +1,27 @@
+{
+  "name": "@nestify/cookie",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Artyom Kayun",
+  "scripts": {
+    "start": "tsc --incremental --watch",
+    "prebuild": "rimraf dist",
+    "build": "tsc",
+    "postbuild": "node ./build.js && cp LICENSE README.md dist",
+    "lint": "tslint -p tsconfig.json -c tslint.json"
+  },
+  "devDependencies": {
+    "@types/node": "~10.17.6",
+    "copy": "^0.3.2",
+    "rimraf": "3.0.0",
+    "tslint": "5.20.1",
+    "tslint-config-standard": "9.0.0",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "@nestjs/common": "^6.10.9",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.3",
+    "tslib": "^1.10.0"
+  }
+}
