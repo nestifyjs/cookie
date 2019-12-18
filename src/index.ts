@@ -4,5 +4,7 @@ export * from './lib/cookie.controller'
 export * from './lib/cookie.decorator'
 export * from './lib/cookie.constants'
 export * from './lib/cookie.interfaces'
+
+export * from './lib/interceptors/abstract-cookie.interceptor'
 export * from './lib/interceptors/fastify-cookie.interceptor'
 export * from './lib/interceptors/express-cookie.interceptor'

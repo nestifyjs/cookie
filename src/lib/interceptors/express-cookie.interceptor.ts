@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common'
 import { Request, Response } from 'express'
+
 import { CookieService } from '../cookie.service'
 import { COOKIES_OPTIONS } from '../cookie.constants'
 import {
@@ -7,7 +8,7 @@ import {
   CookieRemoveRecord,
   CookieSetRecord
 } from '../cookie.interfaces'
-import { AbstractCookieInterceptor } from './cookie.interceptor'
+import { AbstractCookieInterceptor } from './abstract-cookie.interceptor'
 
 declare module 'express' {
 
@@ -35,15 +36,17 @@ export class ExpressCookieInterceptor extends AbstractCookieInterceptor<Request,
     for (const cookie of cookies) {
       const { name, value, options } = cookie
 
-      response.cookie(name, value, options)
+      response.append(CookieService.HEADER_NAME, this.cookies.serialize(name, value, options))
     }
   }
 
   public removeCookiesHandler (cookies: Array<CookieRemoveRecord>, request: Request, response: Response): void {
     for (const cookie of cookies) {
-      const { name, options } = cookie
+      const { name, options = {} } = cookie
 
-      response.clearCookie(name, options)
+      options.maxAge = 0
+
+      response.append(CookieService.HEADER_NAME, this.cookies.serialize(name, '', options))
     }
   }
 }

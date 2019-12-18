@@ -1,11 +1,8 @@
-import {
-  CallHandler,
-  ExecutionContext, NestInterceptor
-} from '@nestjs/common'
+import { CallHandler, ExecutionContext, NestInterceptor } from '@nestjs/common'
 import { Observable } from 'rxjs'
+import { tap } from 'rxjs/operators'
 
 import { CookieService } from '../cookie.service'
-import { tap } from 'rxjs/operators'
 import {
   COOKIES_REMOVE_METADATA,
   COOKIES_SET_METADATA

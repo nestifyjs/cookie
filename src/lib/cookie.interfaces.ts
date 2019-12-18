@@ -20,7 +20,7 @@ export interface CookieOptions {
 export interface CookieSetRecord {
   name: string
   value: string
-  options: Partial<CookieOptions>
+  options?: Partial<CookieOptions>
 }
 
 export interface CookieRemoveRecord {

@@ -1,16 +1,12 @@
 import { assignMetadata, createParamDecorator } from '@nestjs/common'
-import { CookieController } from './cookie.controller'
 import { ROUTE_ARGS_METADATA } from '@nestjs/common/constants'
-import {
-  CookieOptions,
-  CookieRemoveRecord,
-  CookieSetRecord
-} from './cookie.interfaces'
+import { RouteParamtypes } from '@nestjs/common/enums/route-paramtypes.enum'
+
+import { CookieRemoveRecord, CookieSetRecord } from './cookie.interfaces'
 import {
   COOKIES_REMOVE_METADATA,
   COOKIES_SET_METADATA
 } from './cookie.constants'
-import { RouteParamtypes } from '@nestjs/common/enums/route-paramtypes.enum'
 
 type Param = Map<string, any> | string | number | object | undefined
 

@@ -1,11 +1,10 @@
-import {
-  CallHandler,
-  ExecutionContext, Inject,
-  Injectable
-} from '@nestjs/common'
+import { IncomingMessage, ServerResponse } from 'http'
+import { Http2ServerRequest, Http2ServerResponse } from 'http2'
+import { Inject, Injectable } from '@nestjs/common'
 import * as fastify from 'fastify'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { AbstractCookieInterceptor } from './cookie.interceptor'
+
+import { AbstractCookieInterceptor } from './abstract-cookie.interceptor'
 import { COOKIES_OPTIONS } from '../cookie.constants'
 import {
   CookieOptions,
@@ -13,8 +12,6 @@ import {
   CookieSetRecord
 } from '../cookie.interfaces'
 import { CookieService } from '../cookie.service'
-import { IncomingMessage, ServerResponse } from 'http'
-import { Http2ServerRequest, Http2ServerResponse } from 'http2'
 
 type HttpResponse = ServerResponse | Http2ServerResponse
 type HttpRequest = IncomingMessage | Http2ServerRequest
@@ -53,7 +50,7 @@ export class FastifyCookieInterceptor extends AbstractCookieInterceptor<Request,
 
       options.maxAge = 0
 
-      response.header('Set-Cookie', this.cookies.serialize(name, '', options))
+      response.header(CookieService.HEADER_NAME, this.cookies.serialize(name, '', options))
     }
   }
 
@@ -61,7 +58,7 @@ export class FastifyCookieInterceptor extends AbstractCookieInterceptor<Request,
     for (const cookie of cookies) {
       const { name, value, options } = cookie
 
-      response.header('Set-Cookie', this.cookies.serialize(name, value, options))
+      response.header(CookieService.HEADER_NAME, this.cookies.serialize(name, value, options))
     }
   }
 }

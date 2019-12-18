@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common'
+
 import { CookieOptions, CookieSameSite } from './cookie.interfaces'
 
 @Injectable()
 export class CookieService {
+
+  public static readonly HEADER_NAME = 'Set-Cookie'
 
   public static readonly SPLIT_PAIRS_REGEXP = /\s*;\s*/
 
@@ -75,14 +78,10 @@ export class CookieService {
       throw new RangeError('Argument "name" has an invalid value')
     }
 
-    value = this.encode(JSON.stringify(value), encode)
-
-    if (!Boolean(value)) {
-      throw new RangeError('Argument "value" is missing')
-    }
-
-    if (!CookieService.FIELD_CONTENT_REGEXP.test(value)) {
-      throw new RangeError('Argument "value" has an invalid value')
+    if (typeof value === 'string') {
+      value = this.encode(value, encode)
+    } else {
+      value = this.encode(JSON.stringify(value), encode)
     }
 
     let cookie = `${ name }=${ value }`
@@ -112,7 +111,7 @@ export class CookieService {
       cookie += `; Expires=${ expires.toUTCString() }`
     }
 
-    if (expires && !maxAge === undefined) {
+    if (expires && maxAge === undefined) {
       if (typeof expires.toUTCString !=='function') {
         throw new TypeError('Option "expires" must be a Date')
       }

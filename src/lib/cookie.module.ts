@@ -1,18 +1,10 @@
-import {
-  DynamicModule,
-  Global,
-  Module, Type
-} from '@nestjs/common'
-import {
-  APP_INTERCEPTOR,
-  HttpAdapterHost
-} from '@nestjs/core'
+import { DynamicModule, Global, Module, Type } from '@nestjs/common'
+import { APP_INTERCEPTOR } from '@nestjs/core'
+
 import { CookieService } from './cookie.service'
 import { CookieOptions } from './cookie.interfaces'
-import {
-  COOKIES_OPTIONS
-} from './cookie.constants'
-import { AbstractCookieInterceptor } from './interceptors/cookie.interceptor'
+import { COOKIES_OPTIONS } from './cookie.constants'
+import { AbstractCookieInterceptor } from './interceptors/abstract-cookie.interceptor'
 
 @Global()
 @Module({})
