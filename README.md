@@ -26,8 +26,8 @@ npm install @nestifyjs/cookie
 To use decorators, you need to import a `CookieModule`, set an interceptor for your platform and set default options for cookies record.
 
 Available Interceptors:
-* ExpressCookieInterceptor - interceptor for `@nestjs/platform-express`
-* FastifyCookieInterceptor - interceptor for `@nestjs/platform-fastify`
+* **ExpressCookieInterceptor** - interceptor for `@nestjs/platform-express`
+* **FastifyCookieInterceptor** - interceptor for `@nestjs/platform-fastify`
 
 ```typescript
 import { Module } from '@nestjs/common';
@@ -109,7 +109,8 @@ interface CookieSetRecord {
 Depending on the known `name`/`value`/`options` of the cookies before compilation, there are two ways to sets the cookie:
 
 1. **Setting static cookies**
-⋅⋅⋅In `@SetCookies` decorator list values and options for the cookies you want to settings. For example:
+
+   In `@SetCookies` decorator list values and options for the cookies you want to settings. For example:
 ```typescript
 import { Controller, Get } from '@nestjs/common';
 import { SetCookies } from '@nestifyjs/cookie';
@@ -133,16 +134,17 @@ export class AppController {
   }
 }
 ```
-⋅⋅⋅For each cookie, you can set individual options that will **override** the options specified when importing `CookieModule`(if they were identified).
+   For each cookie, you can set individual options that will **override** the options specified when importing `CookieModule`(if they were identified).
 If an object with options is not set for a specific cookie, then global options will be used.
 
 2. **Setting dynamic cookies**
-⋅⋅⋅ To setting dynamic cookies, you must use the `CookiesController`. The router controller must be inherited from the `Cookies Controller`.
+
+   To setting dynamic cookies, you must use the `CookiesController`. The router controller must be inherited from the `Cookies Controller`.
 `CookiesController` defines a method that can be called inside the route handler to configure cookies. Method signature:
 ```typescript
 public setCookie (request: any, name: string, value: any, options: Partial<CookieOptions> = {}): void
 ```
-⋅⋅⋅For example:
+   For example:
 ```typescript
 import { Request, Controller, Get } from '@nestjs/common';
 import { CookieController } from '@nestifyjs/cookie';
@@ -167,14 +169,15 @@ Cookies are deleted similar to setting them, except that you do not need to set 
 >to `@SetCookies` decorator or `CookieController.setCookie()`, excluding `expires` and `maxAge`.
 
 1. **Setting static cookies**
-⋅⋅⋅Use `@RemoveCookies(staticCookies: Array<CookieRemoveRecord>)` route handler method decorator to remove cookies.
+
+   Use `@RemoveCookies(staticCookies: Array<CookieRemoveRecord>)` route handler method decorator to remove cookies.
 ```typescript
 interface CookieRemoveRecord {
   name: string
   options?: Partial<CookieOptions>
 }
 ```
-⋅⋅⋅For example:
+   For example:
 ```typescript
 import { Controller, Get } from '@nestjs/common';
 import { RemoveCookies } from '@nestifyjs/cookie';
@@ -190,16 +193,18 @@ export class AppController {
     }
   ])
   public removeCookieHandler(): string {
-    return `Remove static cookies!`;
+    return `Remove cookies!`;
   }
 }
 ```
 2. **Setting dynamic cookies**
-⋅⋅⋅Use `CookieController.removeCookie()` method to remove cookies.
+
+   Use `CookieController.removeCookie()` method to remove cookies.
 ```typescript
 public removeCookie (request: any, name: string, options: Partial<CookieOptions> = {}): void
 ```
-⋅⋅⋅For example:
+
+   For example:
 ```typescript
 import { Request, Controller, Get } from '@nestjs/common';
 import { CookieController } from '@nestifyjs/cookie';
@@ -212,7 +217,7 @@ export class AppController extends CookieController {
       httpOnly: true,
     });
 
-    return `Remove dynamic cookies!`;
+    return `Remove cookies!`;
   }
 }
 ```
