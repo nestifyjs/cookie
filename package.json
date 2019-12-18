@@ -1,7 +1,7 @@
 {
   "name": "@nestifyjs/cookie",
   "version": "0.1.0",
-  "description": "Library for convenient and dynamic cookies management",
+  "description": "Library for convenient and dynamic cookies management for NestJS",
   "keywords": [
     "cookie",
     "cookies",
