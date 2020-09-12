@@ -89,10 +89,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.16.tgz#3ebcbd7bf978fa4c5120fee8be57083271a8b3ac"
   integrity sha512-vRuMyoOr5yfNf8QWxXegOjeyjpWJxFePzHzmBOIzDIzo+rSqF94RW0PkS6y4T2+VjAWLXHWrfbIJY3E3aS7lUw==
 
-"@types/node@~10.17.6":
-  version "10.17.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.8.tgz#07c0819207b4bb46e5a509fe25f3232e76fa6683"
-  integrity sha512-FeTtEwXbQa187ABpeEQoO7pq3dHgE85FmAUExx2sKO6U1/MYrLTYv+BIMcgVbQ66WjI4w+Ni+5HJtY+gHgWnPg==
+"@types/node@^10.17.6":
+  version "10.17.32"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.32.tgz#4ef6ff8b842ea0eb3fcbc4331489f4ae64036fa8"
+  integrity sha512-EUq+cjH/3KCzQHikGnNbWAGe548IFLSm93Vl8xA7EuYEEATiyOVDyEVuGkowL7c9V69FF/RiZSAOCFPApMs/ig==
 
 "@types/range-parser@*":
   version "1.2.3"
@@ -1137,9 +1137,9 @@ next-tick@1, next-tick@~1.0.0:
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
 node-fetch@^2.3.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
-  integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
 object-hash@2.0.1:
   version "2.0.1"
